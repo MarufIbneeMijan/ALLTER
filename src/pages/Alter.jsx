@@ -160,10 +160,14 @@ const cardVariants = {
 const featureImages = [
   "https://i.ibb.co.com/twh5MhSN/40.jpg",
   "https://i.ibb.co.com/27PjM8j9/37.jpg",
+  "https://i.ibb.co.com/twh5MhSN/40.jpg",
+  "https://i.ibb.co.com/27PjM8j9/37.jpg",
+  "https://i.ibb.co.com/twh5MhSN/40.jpg",
 ];
 
 const Alter = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(0);
   return (
     <div className="font-sans">
       {/* Navbar */}
@@ -303,18 +307,31 @@ const Alter = () => {
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="border-l-4 border-cyan-500 pl-4 text-gray-700 hover:border-cyan-400 hover:text-black transition-all duration-300 cursor-pointer"
+                className={`relative border-l-4 pl-4 text-gray-700 cursor-pointer transition-all duration-300 overflow-hidden 
+                ${
+                  hoveredIndex === index
+                    ? "border-cyan-500 bg-cyan-50 shadow-lg"
+                    : "border-gray-200"
+                }`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(0)}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <p className="text-lg font-medium">{feature}</p>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-cyan-100 z-0"
+                />
+                <p className="text-lg font-medium relative z-10">{feature}</p>
               </motion.div>
             ))}
           </div>
 
-          {/* Centered Image Slider */}
+          {/* Dynamic Image Slider */}
           <motion.div
             className="flex justify-center items-center h-full"
             initial={{ opacity: 0, x: 20 }}
@@ -323,23 +340,13 @@ const Alter = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="w-full md:w-[90%] lg:w-[80%]">
-              <Swiper
-                spaceBetween={20}
-                slidesPerView={1}
-                loop={true}
-                autoplay={{ delay: 10 }}
-                className="rounded-xl shadow-lg overflow-hidden"
-              >
-                {featureImages.map((img, index) => (
-                  <SwiperSlide key={index}>
-                    <img
-                      src={img}
-                      alt={`Feature ${index + 1}`}
-                      className="w-full h-64 object-cover rounded-lg"
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+              <div className="rounded-xl shadow-lg overflow-hidden">
+                <img
+                  src={featureImages[hoveredIndex] || featureImages[0]}
+                  alt={`Feature ${hoveredIndex + 1}`}
+                  className="w-full h-64 object-cover rounded-lg transition-all duration-500"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
@@ -527,12 +534,14 @@ const Alter = () => {
                   transition={{ duration: 0.3 }}
                   onClick={() => setSelectedImage(src)}
                 >
-                  <img
-                    src={src}
-                    alt={`Gallery ${index + 1}`}
-                    className="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover rounded-lg transition-all duration-500 group-hover:brightness-75"
-                  />
-                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 rounded-lg"></div>
+                  <div className="w-full aspect-square relative">
+                    <img
+                      src={src}
+                      alt={`Gallery ${index + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover rounded-lg transition-all duration-500 group-hover:brightness-75"
+                    />
+                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 rounded-lg"></div>
+                  </div>
                 </motion.div>
               ))}
             </div>
