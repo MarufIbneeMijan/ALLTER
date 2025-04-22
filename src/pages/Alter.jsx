@@ -3,6 +3,11 @@ import { Link, Element } from "react-scroll";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Menu, X } from "lucide-react";
+import "keen-slider/keen-slider.min.css";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+import "keen-slider/keen-slider.min.css";
 
 const sectionVariant = {
   hidden: { opacity: 0, y: 50 },
@@ -11,64 +16,58 @@ const sectionVariant = {
 
 const teamMembers = [
   {
-    name: "Alice Johnson",
-    role: "Mechanical Engineer",
-    desc: "Specializes in robotic mobility and actuator design.",
-    img: "https://i.ibb.co/2P5smTm/alice.jpg",
-  },
-  {
-    name: "Bob Smith",
-    role: "Software Engineer",
-    desc: "Backend and control system integration.",
-    img: "https://i.ibb.co/sPWrTQz/bob.jpg",
-  },
-  {
-    name: "Clara Reyes",
-    role: "Electronics Expert",
-    desc: "Sensor calibration and PCB design.",
-    img: "https://i.ibb.co/CHGmmFY/clara.jpg",
-  },
-  {
-    name: "David Kim",
-    role: "AI/ML Engineer",
-    desc: "Navigation and mapping algorithms.",
-    img: "https://i.ibb.co/YbbqTqk/david.jpg",
-  },
-  {
-    name: "Ella Martin",
+    name: "Muntasir Ahad",
     role: "Project Manager",
-    desc: "Coordinates project tasks and team responsibilities.",
-    img: "https://i.ibb.co/Gt4NyWP/ella.jpg",
+    img: "https://czrzkrlkqywcczazeopo.supabase.co/storage/v1/object/public/blog-images//Screenshot%202025-04-22%20at%2012.48.50%20AM.png",
+  },
+
+  {
+    name: "Shahoria Ahmmad Durjoy",
+    role: "Team Lead",
+    desc: "Develops machine learning algorithms for autonomous navigation.",
+    img: "https://i.ibb.co.com/c5DL0Wd/Whats-App-Image-2025-04-21-at-9-53-31-PM-3.jpg",
   },
   {
-    name: "Frank Lee",
-    role: "Hardware Lead",
-    desc: "Responsible for sensor assembly and integration.",
-    img: "https://i.ibb.co/3WjdmMs/frank.jpg",
+    name: "Farha Hassan Priti",
+    role: "Electronics and Communication Lead",
+    desc: "Builds and maintains the rover’s software systems.",
+    img: "https://i.ibb.co.com/XNtkH4p/Whats-App-Image-2025-04-21-at-9-53-32-PM-1.jpg",
   },
   {
-    name: "Grace Chen",
-    role: "UI/UX Designer",
-    desc: "Designs intuitive user interfaces for control apps.",
-    img: "https://i.ibb.co/2FzRtNK/grace.jpg",
+    name: "Mehedi Hasan",
+    role: "Control and AI Lead",
+    desc: "Builds and maintains the rover’s software systems.",
+    img: "https://i.ibb.co.com/F4Zw913f/Whats-App-Image-2025-04-21-at-9-53-32-PM.jpg",
   },
   {
-    name: "Henry Zhao",
-    role: "Data Analyst",
-    desc: "Analyzes rover data and supports AI training.",
-    img: "https://i.ibb.co/GWxFhRY/henry.jpg",
+    name: "Anamul Haque Akash",
+    role: "Management Lead",
+    desc: "Builds and maintains the rover’s software systems.",
+    img: "https://i.ibb.co.com/N6BcN4KD/Whats-App-Image-2025-04-21-at-9-53-33-PM-1.jpg",
   },
   {
-    name: "Isla Gomez",
-    role: "Environmental Specialist",
-    desc: "Ensures compliance with safety standards.",
-    img: "https://i.ibb.co/2vDKp1h/isla.jpg",
+    name: "Mahadia Mashkura  ",
+    role: "Management Co-Lead",
+    desc: "Builds and maintains the rover’s software systems.",
+    img: "https://i.ibb.co.com/rfTqXJxB/Whats-App-Image-2025-04-21-at-9-53-33-PM.jpg",
   },
   {
-    name: "Jack Patel",
-    role: "Test Engineer",
-    desc: "Conducts field testing and troubleshooting.",
-    img: "https://i.ibb.co/JQ3dLRM/jack.jpg",
+    name: "Raheeb Sadman",
+    role: "Electronics Co-Lead",
+    desc: "Builds and maintains the rover’s software systems.",
+    img: "https://i.ibb.co.com/67WnbFr8/Whats-App-Image-2025-04-21-at-9-53-31-PM-1.jpg",
+  },
+  {
+    name: "Jahedul Alam Mahe",
+    role: "Communication Co-Lead",
+    desc: "Builds and maintains the rover’s software systems.",
+    img: "https://i.ibb.co.com/4nvQg23N/Whats-App-Image-2025-04-23-at-1-15-50-AM.jpg",
+  },
+  {
+    name: "Daniel Kim",
+    role: "Software Developer",
+    desc: "Builds and maintains the rover’s software systems.",
+    img: "https://i.ibb.co.com/KpGwFYyd/Whats-App-Image-2025-04-21-at-9-53-31-PM-2.jpg",
   },
 ];
 
@@ -131,10 +130,13 @@ const goals = [
 const photos = [
   "https://i.ibb.co.com/twh5MhSN/40.jpg",
   "https://i.ibb.co.com/27PjM8j9/37.jpg",
-  "https://i.ibb.co/yP1vhs9/rover3.jpg",
-  "https://i.ibb.co/KrDfDcc/rover4.jpg",
-  "https://i.ibb.co/dWVvdRC/rover5.jpg",
-  "https://i.ibb.co/Gxq6HPp/rover6.jpg",
+  "https://i.ibb.co.com/rKcpLtrQ/34.jpg",
+  "https://i.ibb.co.com/wNYxsTDy/39.jpg",
+  "https://i.ibb.co.com/GQkhntvq/Whats-App-Image-2025-04-23-at-12-53-37-AM-3.jpg",
+  "https://i.ibb.co.com/Zpq8g35D/Whats-App-Image-2025-04-23-at-12-53-37-AM-1.jpg",
+  "https://i.ibb.co.com/v4TvWLy7/Whats-App-Image-2025-04-23-at-12-53-37-AM.jpg",
+  "https://i.ibb.co.com/ynj83rP8/50.jpg",
+  "https://i.ibb.co.com/3mkxZ6mB/48-1.jpg",
 ];
 
 const features = [
@@ -149,53 +151,96 @@ const features = [
   "Our Base Station: Centralizes all control systems, offering real-time monitoring, advanced control, and seamless communication.",
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  show: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
-  }),
-};
+const navLinks = [
+  { name: "Home", to: "home" },
+  { name: "About", to: "about" },
+  { name: "Goals", to: "goals" },
+  { name: "Features", to: "features" },
+  { name: "Team", to: "team" },
+  { name: "Gallery", to: "gallery" },
+  { name: "Publications", to: "publications" },
+  { name: "Achievements", to: "achievements" },
+];
 const featureImages = [
-  "https://i.ibb.co.com/twh5MhSN/40.jpg",
-  "https://i.ibb.co.com/27PjM8j9/37.jpg",
-  "https://i.ibb.co.com/twh5MhSN/40.jpg",
-  "https://i.ibb.co.com/27PjM8j9/37.jpg",
-  "https://i.ibb.co.com/twh5MhSN/40.jpg",
+  "https://i.ibb.co.com/FrKXyPK/IMG-20250414-WA0016.jpg",
+  "https://i.ibb.co.com/Lj7wjfT/Messenger-creation-1350-FF05-8-C8-D-48-E4-94-D1-400875-F0-ABEE.jpg",
+  "https://i.ibb.co.com/67HrJ2Ym/Whats-App-Image-2025-04-22-at-10-43-02-PM.jpg",
+  "https://i.ibb.co.com/H0Tknfz/Whats-App-Image-2025-04-22-at-10-43-03-PM-2.jpg",
+  "https://i.ibb.co.com/nqdKwWDs/Whats-App-Image-2025-04-22-at-10-43-03-PM-3.jpg",
+  "https://i.ibb.co.com/k2hqvFXS/Whats-App-Image-2025-04-22-at-10-45-48-PM-1.jpg",
+  "https://i.ibb.co.com/Nct1btw/Whats-App-Image-2025-04-22-at-10-45-48-PM-2.jpg",
 ];
 
 const Alter = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [sliderRef] = useKeenSlider({
+    breakpoints: {
+      "(min-width: 640px)": {
+        slides: { perView: 2, spacing: 20 },
+      },
+      "(min-width: 1024px)": {
+        slides: { perView: 4, spacing: 20 },
+      },
+    },
+    slides: { perView: 1, spacing: 20 },
+    loop: true,
+  });
   const [hoveredIndex, setHoveredIndex] = useState(0);
+
   return (
     <div className="font-sans">
       {/* Navbar */}
-      <nav className="fixed top-0 w-full bg-[#1a1f2e] mx-auto shadow-md z-50">
-        <ul className="flex justify-center space-x-8 p-4 text-cyan-200 font-semibold">
-          {[
-            "home",
-            "about",
-            "publications",
-            "goals",
-            "team",
-            "achievements",
-          ].map((item) => (
-            <li key={item}>
-              <Link
-                to={item}
-                smooth={true}
-                duration={600}
-                offset={-64}
-                className="cursor-pointer capitalize hover:text-cyan-400"
-              >
-                {item === "team" ? "Meet the Team" : item}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <nav className="container mx-auto fixed top-0 z-50 bg-white  px-6 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* Logo */}
+          <div className="text-2xl font-bold text-cyan-600">Alter</div>
 
+          {/* Desktop Nav */}
+          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.to}
+                smooth={true}
+                duration={500}
+                className="text-gray-700 hover:text-cyan-600 cursor-pointer font-medium transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Hamburger Icon */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-700"
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Nav */}
+        {isOpen && (
+          <div className="md:hidden mt-4 flex flex-col space-y-4 bg-white shadow-lg px-6 py-4 rounded-md">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.to}
+                smooth={true}
+                duration={500}
+                onClick={() => setIsOpen(false)}
+                className="text-gray-700 hover:text-cyan-600 cursor-pointer font-medium transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+        )}
+      </nav>
       {/* Home Section - Swiper with Background Images */}
       <Element name="home" className="relative h-screen w-full overflow-hidden">
         {/* Background Video */}
@@ -212,9 +257,10 @@ const Alter = () => {
         <div className="absolute inset-0 bg-black/50 z-10" />
 
         {/* Content */}
-        <div className="relative z-20 flex items-center justify-center h-full">
-          <h1 className="text-4xl md:text-5xl font-bold text-center text-white px-4 bg-black/60 p-4 rounded-xl">
-            Welcome to the Alter 🚀
+        <div className="relative z-20 flex p-5 items-end justify-center h-full">
+          <h1 className="text-2xl md:text-2xl font-bold text-center text-white  px-4 p-4 rounded-xl">
+            <span className="text-3xl"> "BRACU ALTER"</span> An Autonomous
+            locomotion technology for emergency rescue
           </h1>
         </div>
       </Element>
@@ -231,7 +277,7 @@ const Alter = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-semibold mb-4 ">About the Mission</h2>
-          <p className="max-w-2xl  text-lg">
+          <p className="max-w-2xl text-justify text-lg">
             Our mission is to create a cutting-edge underground rover that can
             safely explore, map, and monitor hazardous environments such as
             manholes and underground tunnels. The rover is equipped with gas
@@ -284,7 +330,7 @@ const Alter = () => {
 
       {/* Explore Section */}
       <Element name="features" className="bg-white py-20 px-6 text-gray-800">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
@@ -302,49 +348,43 @@ const Alter = () => {
 
         {/* Two-column layout */}
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-          {/* Feature List */}
+          {/* Feature list */}
           <div className="space-y-6">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className={`relative border-l-4 pl-4 text-gray-700 cursor-pointer transition-all duration-300 overflow-hidden 
-                ${
-                  hoveredIndex === index
-                    ? "border-cyan-500 bg-cyan-50 shadow-lg"
-                    : "border-gray-200"
-                }`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(0)}
+                className={`relative border-l-4 pl-4 cursor-pointer transition-all duration-300 
+                ${
+                  hoveredIndex === index
+                    ? "border-cyan-500 bg-cyan-50 shadow-md"
+                    : "border-gray-200"
+                }`}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-cyan-100 z-0"
-                />
-                <p className="text-lg font-medium relative z-10">{feature}</p>
+                <p className="text-lg font-semibold">{feature}</p>
               </motion.div>
             ))}
           </div>
 
-          {/* Dynamic Image Slider */}
+          {/* Dynamic image display */}
           <motion.div
-            className="flex justify-center items-center h-full"
+            className="flex justify-center items-center"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <div className="w-full md:w-[90%] lg:w-[80%]">
-              <div className="rounded-xl shadow-lg overflow-hidden">
+              <div className="rounded-xl overflow-hidden shadow-lg">
                 <img
-                  src={featureImages[hoveredIndex] || featureImages[0]}
+                  src={featureImages[hoveredIndex]}
                   alt={`Feature ${hoveredIndex + 1}`}
-                  className="w-full h-64 object-cover rounded-lg transition-all duration-500"
+                  className="w-full h-64 object-cover transition-all duration-500 rounded-lg"
                 />
               </div>
             </div>
@@ -439,7 +479,7 @@ const Alter = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-semibold text-black mb-8 text-center">
-            Meet the Team Behind the Rover
+            Team Members
           </h2>
         </motion.div>
 
@@ -450,29 +490,24 @@ const Alter = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-          >
+          <div className="keen-slider" ref={sliderRef}>
             {teamMembers.map((member, index) => (
-              <SwiperSlide key={index}>
-                <div className="bg-white rounded-xl shadow-lg p-6 text-center flex flex-col items-center">
-                  <img
-                    src={member.img}
-                    alt={member.name}
-                    className="w-40 h-40 rounded-full object-cover mb-4 border-4 border-purple-300"
-                  />
-                  <h3 className="text-xl font-bold">{member.name}</h3>
-                  <p className="text-purple-700 mb-2">{member.role}</p>
-                  <p className="text-gray-600 text-sm">{member.desc}</p>
+              <div className="keen-slider__slide" key={index}>
+                <div
+                  className="h-72 rounded-xl shadow-lg flex items-end justify-center bg-cover bg-center relative group overflow-hidden"
+                  style={{ backgroundImage: `url(${member.img})` }}
+                >
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition duration-300"></div>
+                  <div className="relative z-10 text-center p-4 text-white">
+                    <h3 className="text-xl font-bold">{member.name}</h3>
+                    <p className="text-purple-300 font-semibold">
+                      {member.role}
+                    </p>
+                  </div>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </motion.div>
       </Element>
 
